@@ -8,7 +8,7 @@ Simple webapp to synchronize a SRT subtitles file. The user copy&paste the conte
 
 ## Use this app online
 
-I have uploaded and running this app here: [http://guaser.info/php_srrSyncSubtitles]
+I have uploaded and running this app here: [http://guaser.info/SyncSubtitles]
 
 ## Install this app
 
