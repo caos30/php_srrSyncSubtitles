@@ -207,13 +207,24 @@
                     if ($num_lineas>0){
                             for ($il=0;$il < $num_lineas;$il++){
                                     $linea = $lineas[$il];
+                                    $next_linea = $lineas[$il+1];
                                     if (!isset($ele['id'])){	
                                             if ($ele_id==0 && intval($linea)>0) 
                                                     $ele_id = intval($linea);
                                             else 
                                                     $ele_id++;
                                             $ele['id'] = $ele_id; 
-                                    }else if (!isset($ele['inicio'])){
+									}else if (preg_match('/:(.*)-->(.*):/',$next_linea)){
+											// = save the current subtitle, if the text is not in blank
+												if (!empty($ele['subt'])){
+													$ret[$ele['id']] = $ele;
+													$ele_id++;
+												}
+												unset($ele);
+											// volver a empezar con un nuevo subtitulo 
+												$ele = array();
+												$ele['id'] = $ele_id;
+                                    }else if (!isset($ele['inicio']) && preg_match('/:(.*)-->(.*):/',$linea)){
                                             $trozos = explode("-->",trim($linea));  
                                             $ele['inicio'] = trim($trozos[0]);
                                             $ele['final'] = trim($trozos[1]);
@@ -225,17 +236,7 @@
                                             $ret[$ele['id']] = $ele;
                                             break;
                                     }else{ 
-                                            $next_linea = $lineas[$il+1];
-                                            if (preg_match('/:(.*)-->(.*):/',$next_linea)){
-                                                    $ret[$ele['id']] = $ele;
-                                                    unset($ele);
-                                                    // volver a empezar con un nuevo subtitulo 
-                                                    $ele = array();
-                                                    $ele_id++;
-                                                    $ele['id'] = $ele_id;
-                                            }else{
-                                                    $ele['subt'] .= "\n".trim($linea);
-                                            }
+											$ele['subt'] .= "\n".trim($linea);
                                     }
                             }
                             // añadir el ultimo subtitulo
