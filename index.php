@@ -8,7 +8,7 @@
 
         global $config;
         $config = array(
-					'version' => '1.0',
+					'version' => '1.1',
                     'l' => array(),
                     'ts' => array('current_1'=>'','target_1'=>'','current_2'=>'', 'target_2'=>''),
                     'first_id' => '1',

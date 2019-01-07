@@ -2,7 +2,7 @@
 <?php /* ============== */ if ($viewname=='layout'){ /* ============== */ ?>
 
     <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
-    <html lang='es'>
+    <html lang='es' class="dark">
         <head>
             <meta charset='utf-8'>
             <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
@@ -75,6 +75,30 @@
                     td{ padding:0.2rem 0.4rem;}
                 }
                 #signature {border-top:1px rgba(0,0,0,0.1) solid;padding-top:1rem;margin-top:2rem;font-size:0.8rem;font-weight:bold;}
+                
+			/* === DARK THEME === */
+
+				html.dark, html.dark body{
+					color:#baa;
+					background: #333; /* fallback for old browsers */
+					background: -webkit-linear-gradient(to left, #000 , #333); /* Chrome 10-25, Safari 5.1-6 */
+					background: linear-gradient(to left, #000 , #333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				}
+				html.dark table.alt-row{background-color:transparent;}
+				html.dark .bt{color:#b99; background: rgba(100,0,0,0.4);border: 1px rgba(255,255,255,0.1) solid;}
+				html.dark table.alt-row tbody > tr td{ border-bottom: 1px #555 solid;}
+				html.dark .yes{background-color:#485;}
+				html.dark table.alt-row thead > tr td{ color: #ebb;}
+				html.dark input, html.dark textarea, html.dark select{ color:#a98;background:black;border: 1px rgba(255,255,255,0.2) solid; }
+				html.dark table.alt-row table{border-color:#b99!important;}
+				html.dark .fa-info-circle{color:#9be;cursor:pointer;display:none;}
+
+				html.dark .modal_content{background-color:rgba(0,0,0,0.5);color:#ccc;box-shadow:0px 0px 25px rgba(255,255,255,0.6);}
+			html.dark .modal_close{background-color:#411;border-bottom: 1px #777 solid;}
+
+			html.dark .backup_report .not-pair{background-color:rgba(255,255,255,0.1);}
+			html.dark .backup_report .pair{background-color:rgba(255,155,155,0.3);color:#ddd;}
+
             </style>
         </head>
         <body>
@@ -102,7 +126,10 @@
             
             <!-- signature -->
             <p id="signature">
-				<a href="https://github.com/caos30/php_srrSyncSubtitles" target="_blank">php_srrSyncSubtitles - v<?= $config['version'] ?></a> (C) 2016 GPL v3 license
+				<a href="https://github.com/caos30/php_srrSyncSubtitles" target="_blank">php_srrSyncSubtitles - v<?= $config['version'] ?> on Github</a> 2016-2019 GPL v3 license
+				<!-- this is hidden because we're not loading jQuery and bufff... i've no time now to program this change without jQuery ;-)
+				&nbsp; | &nbsp; <a href="#" onclick="$('html').toggleClass('dark');return false;">Dark theme</a>
+				-->
 			</p>
             
         </body>
